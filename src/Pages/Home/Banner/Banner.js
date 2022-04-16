@@ -26,7 +26,6 @@ const Banner = () => {
                     src={slider2}
                     alt="Second slide"
                 />
-                Easy Way to Get Visa
 
                 <Carousel.Caption>
                     <p>WE ARE ALWAYS READY TO HERE YOU</p>
