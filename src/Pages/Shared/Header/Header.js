@@ -20,7 +20,7 @@ const Header = () => {
                     <Nav className='fs-5'>
                         <Nav.Link as={Link} to="/about">Login</Nav.Link>
                         <span className='mt-2'>|</span>
-                        <Nav.Link as={Link} to="/about">Sing Up</Nav.Link>
+                        <Nav.Link as={Link} to="/singup">Sing Up</Nav.Link>
                         {/* {
                             user ?
                                 <Nav.Link as={Link} to="login" onClick={singOut}>
