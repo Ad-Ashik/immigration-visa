@@ -1,16 +1,18 @@
 import React from 'react';
 
-const Service = () => {
+const Service = ({ service }) => {
+    const { name, img, price, description } = service;
     return (
-        <div class="col">
-            <div class="card h-100">
-                {/* <img src="..." class="card-img-top" alt="..."> */}
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div className="col">
+            <div className="card h-100">
+                <img src={img} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <h5 className="card-title">City: {name}</h5>
+                    <p className='fw-bold'>Price: ${price}</p>
+                    <p className="card-text mb-3"><span className='fw-bold'>Description: </span>{description}</p>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                <div>
+                    <button className='btn btn-primary w-100 p-3 fs-5'>Checkout here..</button>
                 </div>
             </div>
         </div>
