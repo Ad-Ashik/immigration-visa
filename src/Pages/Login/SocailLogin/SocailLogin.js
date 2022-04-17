@@ -8,24 +8,24 @@ import './SocailLogin.css';
 
 const SocailLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithGithub, userHut, loadingHut, errorHut] = useSignInWithGithub(auth);
+    const [signInWithGithub, userGit, loadingGit, errorGit] = useSignInWithGithub(auth);
     const [signInWithFacebook, userFb, loadingFb, errorFb] = useSignInWithFacebook(auth);
     const navigate = useNavigate();
 
-    if (user || userHut || userFb) {
+    if (user || userGit || userFb) {
         navigate('/home');
     }
 
     let errorCheck, lodingCheck;
-    if (error || errorHut || errorFb) {
-        errorCheck = <p className='text-center text-danger'>Error: {error.message}</p>;
+    if (error || errorGit || errorFb) {
+        errorCheck = <p className='text-center text-danger'>Error: {error?.message} {errorGit?.message} {errorFb?.message}</p>;
     }
-    if (loading || loadingHut || loadingFb) {
-        lodingCheck = <div class="text-center mb-3">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-                <div class="spinner-grow spinner-grow-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
+    if (loading || loadingGit || loadingFb) {
+        lodingCheck = <div className="text-center mb-3">
+            <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+                <div className="spinner-grow spinner-grow-sm" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>

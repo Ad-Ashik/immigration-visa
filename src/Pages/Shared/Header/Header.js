@@ -43,16 +43,6 @@ const Header = () => {
                                     <Nav.Link as={Link} to="/singup">Sing Up</Nav.Link>
                                 </>
                         }
-                        {/* {
-                            user ?
-                                <Nav.Link as={Link} to="login" onClick={singOut}>
-                                    Sing Out
-                                </Nav.Link>
-                                :
-                                <Nav.Link as={Link} to="login">
-                                    Login
-                                </Nav.Link>
-                        } */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import SocailLogin from '../SocailLogin/SocailLogin';
+import SoccailLogin from '../SocailLogin/SocailLogin';
 
 const Register = () => {
     const [
@@ -23,11 +23,11 @@ const Register = () => {
         errorCheck = <p className='text-center text-danger'>Error: {error.message}</p>;
     }
     if (loading) {
-        lodingCheck = <div class="text-center">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-                <div class="spinner-grow spinner-grow-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
+        lodingCheck = <div className="text-center">
+            <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+                <div className="spinner-grow spinner-grow-sm" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@ const Register = () => {
                     Please Login
                 </Link>
                 </p>
-                <SocailLogin></SocailLogin>
+                <SoccailLogin></SoccailLogin>
             </Form>
         </div >
     );
