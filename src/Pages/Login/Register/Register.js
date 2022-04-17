@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import Loading from '../Loading/Loading';
 
 const Register = () => {
     const [
@@ -67,7 +66,7 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className='w-25' variant="primary" type="submit">
                     Sing Up
                 </Button>
                 {lodingCheck}
@@ -77,7 +76,7 @@ const Register = () => {
                 </Link>
                 </p>
             </Form>
-        </div>
+        </div >
     );
 };
 

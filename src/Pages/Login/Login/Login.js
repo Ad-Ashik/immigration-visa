@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Login = () => {
@@ -12,9 +12,12 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     if (user) {
-        navigate('/home')
+        navigate(from, { replace: true });
     }
 
     let errorCheck, lodingCheck;
@@ -54,10 +57,10 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" required />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className='w-25 my-3' variant="primary" type="submit">
                     Login
                 </Button>
-                {loading}
+                {lodingCheck}
                 {errorCheck}
                 <p className='text-center'>New to visa-onsultant? <Link to="/singup" className='text-primary text-decoration-underline'>
                     Please Register
