@@ -1,23 +1,26 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import gitLogo from '../../../images/socail/git-logo.png';
+import fbLogo from '../../../images/socail/fb-logo.png';
 import './SocailLogin.css';
 
 const SocailLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, userHut, loadingHut, errorHut] = useSignInWithGithub(auth);
     const navigate = useNavigate();
 
-    if (user) {
+    if (user || userHut) {
         navigate('/home');
     }
 
     let errorCheck, lodingCheck;
-    if (error) {
+    if (error || errorHut) {
         errorCheck = <p className='text-center text-danger'>Error: {error.message}</p>;
     }
-    if (loading) {
-        lodingCheck = <div class="text-center">
+    if (loading || loadingHut) {
+        lodingCheck = <div class="text-center mb-3">
             <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
                 <div class="spinner-grow spinner-grow-sm" role="status">
@@ -41,13 +44,13 @@ const SocailLogin = () => {
                     <img style={{ width: '35px' }} src='https://accounts.scdn.co/sso/images/google-icon.1cdc8fce9609d07f0e9d8d0bc4b61f8f.svg' alt="" />
                     <span className='px-1'>Google Sing In</span>
                 </button>
-                <button className='btn btn-outline-primary w-100 p-2 my-3 not-hover'>
-                    <img style={{ width: '35px' }} src='' alt="" />
-                    <span className='px-1'>GitHub Sing In</span>
+                <button onClick={() => signInWithGithub()} className='btn btn-outline-primary w-100 p-2 my-3 not-hover'>
+                    <img style={{ width: '24px' }} src={gitLogo} alt="" />
+                    <span className='px-2'>GitHub Sing In</span>
                 </button>
                 <button className='btn btn-outline-primary w-100 p-2 not-hover'>
-                    <img style={{ width: '35px' }} src='' alt="" />
-                    <span className='px-1'>Facebook Sing In</span>
+                    <img className='ms-3' style={{ width: '24px' }} src={fbLogo} alt="" />
+                    <span className='px-2'>Facebook Sing In</span>
                 </button>
             </div>
         </div>
