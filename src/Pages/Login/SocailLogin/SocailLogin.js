@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import gitLogo from '../../../images/socail/git-logo.png';
@@ -9,17 +9,18 @@ import './SocailLogin.css';
 const SocailLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, userHut, loadingHut, errorHut] = useSignInWithGithub(auth);
+    const [signInWithFacebook, userFb, loadingFb, errorFb] = useSignInWithFacebook(auth);
     const navigate = useNavigate();
 
-    if (user || userHut) {
+    if (user || userHut || userFb) {
         navigate('/home');
     }
 
     let errorCheck, lodingCheck;
-    if (error || errorHut) {
+    if (error || errorHut || errorFb) {
         errorCheck = <p className='text-center text-danger'>Error: {error.message}</p>;
     }
-    if (loading || loadingHut) {
+    if (loading || loadingHut || loadingFb) {
         lodingCheck = <div class="text-center mb-3">
             <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
@@ -48,7 +49,7 @@ const SocailLogin = () => {
                     <img style={{ width: '24px' }} src={gitLogo} alt="" />
                     <span className='px-2'>GitHub Sing In</span>
                 </button>
-                <button className='btn btn-outline-primary w-100 p-2 not-hover'>
+                <button onClick={() => signInWithFacebook()} className='btn btn-outline-primary w-100 p-2 not-hover'>
                     <img className='ms-3' style={{ width: '24px' }} src={fbLogo} alt="" />
                     <span className='px-2'>Facebook Sing In</span>
                 </button>
