@@ -20,7 +20,7 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto fs-5">
+                    <Nav className="me-auto">
                         <Nav.Link href="home#services">Services</Nav.Link>
                         <Nav.Link href="home#exparts">Blogs</Nav.Link>
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
@@ -29,7 +29,9 @@ const Header = () => {
                         {
                             user ?
                                 <>
-                                    <p>{user.displayName}</p>
+                                    <Nav.Link className='fs-6 mt-1' as={Link} to="update">
+                                        {user.displayName}
+                                    </Nav.Link>
                                     <Nav.Link as={Link} to="login" onClick={logout}>
                                         Sing Out
                                     </Nav.Link>

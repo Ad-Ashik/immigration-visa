@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import SocailLogin from '../SocailLogin/SocailLogin';
 
 const Login = () => {
     const [
@@ -66,6 +67,7 @@ const Login = () => {
                     Please Register
                 </Link>
                 </p>
+                <SocailLogin></SocailLogin>
             </Form>
         </div>
     );

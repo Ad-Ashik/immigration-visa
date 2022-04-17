@@ -8,7 +8,7 @@ const RequirAuth = ({ children }) => {
     let location = useLocation();
 
     if (loading) {
-        return <div class="text-center ">
+        return <div class="text-center mt-5">
             <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
                 <div class="spinner-grow spinner-grow-sm" role="status">
