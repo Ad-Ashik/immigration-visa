@@ -1,26 +1,24 @@
 import React from 'react';
-import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import gitLogo from '../../../images/socail/git-logo.png';
-import fbLogo from '../../../images/socail/fb-logo.png';
 import './SocailLogin.css';
 
 const SocailLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, userGit, loadingGit, errorGit] = useSignInWithGithub(auth);
-    const [signInWithFacebook, userFb, loadingFb, errorFb] = useSignInWithFacebook(auth);
     const navigate = useNavigate();
 
-    if (user || userGit || userFb) {
+    if (user || userGit) {
         navigate('/home');
     }
 
     let errorCheck, lodingCheck;
-    if (error || errorGit || errorFb) {
-        errorCheck = <p className='text-center text-danger'>Error: {error?.message} {errorGit?.message} {errorFb?.message}</p>;
+    if (error || errorGit) {
+        errorCheck = <p className='text-center text-danger'>Error: {error?.message} {errorGit?.message} </p>;
     }
-    if (loading || loadingGit || loadingFb) {
+    if (loading || loadingGit) {
         lodingCheck = <div className="text-center mb-3">
             <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -48,10 +46,6 @@ const SocailLogin = () => {
                 <button onClick={() => signInWithGithub()} className='btn btn-outline-primary w-100 p-2 my-3 not-hover'>
                     <img style={{ width: '24px' }} src={gitLogo} alt="" />
                     <span className='px-2'>GitHub Sing In</span>
-                </button>
-                <button onClick={() => signInWithFacebook()} className='btn btn-outline-primary w-100 p-2 not-hover'>
-                    <img className='ms-3' style={{ width: '24px' }} src={fbLogo} alt="" />
-                    <span className='px-2'>Facebook Sing In</span>
                 </button>
             </div>
         </div>
