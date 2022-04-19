@@ -4,6 +4,7 @@ const Blogs = () => {
     return (
 
         <div className='w-50 my-5 mx-auto'>
+            <h3>All queries Answer:</h3>
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
@@ -64,7 +65,6 @@ const Blogs = () => {
                     </div>
                 </div>
             </div>
-
         </div>
 
     );
