@@ -5,7 +5,8 @@ const CheckOut = () => {
     const { checkoutId } = useParams();
     return (
         <div>
-            <h2>Please continue your order: {checkoutId}</h2>
+            <h2 className='text-center text-success my-5'>Please continue your order: {checkoutId}</h2>
+
         </div>
     );
 };
